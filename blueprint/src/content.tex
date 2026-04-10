@@ -8,7 +8,7 @@
 
 \chapter{Euclid's Proof of the Infinitude of Primes}
 
-In this Chapter, we see a basic example that demonstrates how the blueprint and the dependency graph work: Euclid's proof of the infinitude of primes. Credits to \url{https://github.com/thefundamentaltheor3m/EPFLDemo2}.
+In this Chapter, we see a basic example that demonstrates how the blueprint and the dependency graph work: Euclid's proof of the infinitude of primes. Initial Lean and Tex content taken from \url{https://github.com/thefundamentaltheor3m/EPFLDemo2}.
 
 \section{Structure of the Argument}
 
@@ -28,7 +28,25 @@ Since $n$ was arbitrary, there is no largest prime.
 
 We will turn each of the above steps into a concrete lemma, and we will add in the dependencies once we've understood how the argument goes.
 
+\begin{lemma}[Factorial is at least one]
+\label{lem:one_le_fac}
+\lean{one_le_fac}
+\leanok
+For every natural number $n$, one has
+\[
+1 \le n!.
+\]
+\end{lemma}
+\begin{proof}
+\proves{lem:one_le_fac}
+\leanok
+Obvious.
+\end{proof}
+
 \begin{lemma}[Factorial-plus-one is at least two]
+\label{lem:two_le_fac_add_one}
+\lean{two_le_fac_add_one}
+\leanok
 For every natural number $n$, one has
 \[
 2 \le n! + 1.
@@ -36,6 +54,9 @@ For every natural number $n$, one has
 \end{lemma}
 
 \begin{proof}
+\proves{lem:two_le_fac_add_one}
+\uses{lem:one_le_fac}
+\leanok
 For every $n$, we know $n! \ge 1$ (equivalently, $n!>0$). Adding $1$ gives
 \[
 n!+1 \ge 2.
